@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatingDeviceTable extends Migration
+class CreatingServicesTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatingDeviceTable extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('alias');
-            $table->string('imei')->nullable();
-            $table->string('brand');
-            $table->string('model');
-            $table->string('fcm_token');
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreatingDeviceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devices');
+        //
     }
 }
