@@ -15,6 +15,7 @@ class CreatingDeviceTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('user_id');
             $table->string('alias');
             $table->string('imei')->nullable();
             $table->string('brand');

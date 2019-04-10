@@ -12,7 +12,7 @@ class Device extends Model
      * @var array
      */
     protected $fillable = [
-        'alias', 'imei', 'brand', 'model', 'fcm_token'
+        'user_id', 'alias', 'imei', 'brand', 'model', 'fcm_token'
     ];
 
     /**
