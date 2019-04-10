@@ -23,4 +23,13 @@ class Device extends Model
     protected $hidden = [
 
     ];
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

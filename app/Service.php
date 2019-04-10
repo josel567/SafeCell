@@ -23,4 +23,9 @@ class Service extends Model
     protected $hidden = [
 
     ];
+
+    public function post()
+    {
+        return $this->belongsToMany(Device::class);
+    }
 }
