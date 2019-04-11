@@ -93,4 +93,20 @@ class DeviceController extends Controller
             ], 403);
         }
     }
+
+    public function getAll(Request $request)
+    {
+        // Obtener Id de usuario
+        $userId = Auth::user()->id;
+        try {
+            $devices = Device::where('user_id', $userId)->get();
+            return response()->json([
+                "devices" => $devices
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => $e->getMessage()
+            ], 400);
+        }
+    }
 }
