@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatingServicesTables extends Migration
+class CreatingDeviceServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatingServicesTables extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('device_service', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('description');
+            $table->integer('device_id');
+            $table->integer('service_id');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatingServicesTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('device_service');
     }
 }
