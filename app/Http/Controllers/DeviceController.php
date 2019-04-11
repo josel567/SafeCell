@@ -64,7 +64,32 @@ class DeviceController extends Controller
             }
         } else {
             return response()->json([
-                "message" => "Este dispositivo no está vinculado con este usuario"
+                "message" => "No hay un dispositivo asociado a tu cuenta con esta id."
+            ], 403);
+        }
+    }
+
+    public function remove($id)
+    {
+        // Obtener Id de usuario
+        $userId = Auth::user()->id;
+        // Obtener dispositivo con esta id
+        $device= Device::find($id);
+        // Comprobamos que el dispositivo sea del usuario que hace la request
+        if($device->user_id == $userId) {
+            try {
+                $device->delete();
+                return response()->json([
+                    "message" => "Dispositivo eliminado correctamente"
+                ], 200);
+            } catch (\Exception $e) {
+                return response()->json([
+                    "message" => $e->getMessage()
+                ], 400);
+            }
+        } else {
+            return response()->json([
+                "message" => "No hay un dispositivo asociado a tu cuenta con esta id."
             ], 403);
         }
     }

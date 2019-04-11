@@ -20,7 +20,7 @@ class CreatingDeviceTable extends Migration
             $table->string('imei')->nullable();
             $table->string('brand');
             $table->string('model');
-            $table->string('fcm_token');
+            $table->string('fcm_token')->nullable();
             $table->timestamps();
         });
     }
