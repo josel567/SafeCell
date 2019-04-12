@@ -34,7 +34,10 @@ class ServiceController extends Controller
         }
 
         try {
-            $device->attach([$service => ['status'=>$params['status']]]);
+            $device->services()->attach($service->id, ['is_active'=>$params['is_active']]);
+            return response()->json([
+                'message' => "Servicio añadido correctamente.",
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
