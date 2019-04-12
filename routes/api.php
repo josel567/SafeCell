@@ -20,5 +20,8 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::delete('remove/{id}', 'DeviceController@remove');
         Route::get('all', 'DeviceController@getAll');
     });
+    Route::group(['prefix' => 'service'], function () {
+        Route::post('add', 'ServiceController@add');
+    });
 });
 

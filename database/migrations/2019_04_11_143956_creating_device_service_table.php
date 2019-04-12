@@ -15,8 +15,8 @@ class CreatingDeviceServiceTable extends Migration
     {
         Schema::create('device_service', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('device_id');
-            $table->integer('service_id');
+            $table->integer('device_id')->unsigned();
+            $table->integer('service_id')->unsigned();
             $table->boolean('is_active');
             $table->timestamps();
         });
