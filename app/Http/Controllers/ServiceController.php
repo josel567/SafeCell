@@ -6,6 +6,7 @@ use App\Device;
 use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -33,6 +34,18 @@ class ServiceController extends Controller
             ], 400);
         }
 
+        // Compruebo si ya existe el servicio para este dispositivo
+        $serviceAlreadyAdded = DB::table('device_service')
+            ->select('*')
+            ->where('device_id', $device->id)
+            ->where('service_id', $service->id)
+            ->get();
+
+        if (!empty($serviceAlreadyAdded)) {
+            return response()->json([
+                'message' => "Ese servicio ya está asociado al dispositivo.",
+            ], 400);
+        }
         try {
             $device->services()->attach($service->id, ['is_active'=>$params['is_active']]);
             return response()->json([
