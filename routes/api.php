@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     });
     Route::group(['prefix' => 'service'], function () {
         Route::post('add', 'ServiceController@add');
+        Route::patch('update', 'ServiceController@update');
+        Route::delete('delete', 'ServiceController@delete');
     });
 });
 
