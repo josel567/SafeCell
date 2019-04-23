@@ -74,7 +74,7 @@ class DeviceController extends Controller
         // Obtener Id de usuario
         $userId = Auth::user()->id;
         // Obtener dispositivo con esta id
-        $device= Device::find($id);
+        $device = Device::find($id);
         // Comprobamos que el dispositivo sea del usuario que hace la request
         if($device->user_id == $userId) {
             try {
@@ -106,6 +106,28 @@ class DeviceController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 "message" => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    public function updateDeviceFcmToken(Request $request)
+    {
+        // Obtenemos los parametros de la request
+        $params = $request->all();
+
+        $device = Device::find($params['device_id']);
+
+        try {
+            $device->fcm_token = $params['fcm_token'];
+            $device->save();
+            return response()->json([
+                'updated' => 'OK',
+                'new_device_fcm_token' => $device->fcm_token
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'updated' => 'KO',
+                'message' => $e->getMessage()
             ], 400);
         }
     }

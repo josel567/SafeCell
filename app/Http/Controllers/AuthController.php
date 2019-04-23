@@ -64,4 +64,16 @@ class AuthController extends Controller
     {
         return response()->json($request->user());
     }
+
+    public function updateUser(Request $request)
+    {
+        $user = Auth::User();
+        $params = $request->all();
+
+        $user->name = $params['name'];
+        $user->email = $params['email'];
+        $user->save();
+
+        return response()->json($request->user());
+    }
 }
