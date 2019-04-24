@@ -155,4 +155,27 @@ class ServiceController extends Controller
             ], 400);
         }
     }
+
+    public function getStatuses (Request $request) {
+        $user = Auth::user();
+        $params = $request->all();
+        $device = Device::where('id', $params['device_id'])->first();
+
+        if (empty($device)) {
+            return response()->json([
+                'message' => 'No existe un dispositivo con la id proporcionada.',
+            ], 400);
+        }
+
+        if ($device->user_id != $user->id) {
+            return response()->json([
+                'message' => 'No existe un dispositivo asociado a tu cuenta de usuario con la id proporcionada.',
+            ], 400);
+        }
+
+        $services = $device->services();
+
+        //Services tiene pivots!!
+
+    }
 }
