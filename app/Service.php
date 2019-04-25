@@ -24,8 +24,8 @@ class Service extends Model
 
     ];
 
-    public function post()
+    public function devices()
     {
-        return $this->belongsToMany(Device::class);
+        return $this->belongsToMany(Device::class)->withPivot('is_active');
     }
 }

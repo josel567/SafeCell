@@ -173,9 +173,27 @@ class ServiceController extends Controller
             ], 400);
         }
 
-        $services = $device->services();
+        $services = $device->services;
 
-        //Services tiene pivots!!
+        $services_statuses = [];
+
+        foreach ($services as $service) {
+            array_push($services_statuses, [
+                "name" => $service->name,
+                "status" => $service->pivot->is_active
+            ]);
+        }
+
+        if(sizeof($services_statuses) == 0) {
+            return response()->json([
+                'message' => 'No hay servicios activos para este dispositivo.',
+            ], 200);
+        } else {
+            return response()->json([
+                'services' => $services_statuses,
+            ], 200);
+        }
+
 
     }
 }

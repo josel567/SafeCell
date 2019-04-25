@@ -26,7 +26,7 @@ class Device extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class)->withPivot('is_active');
     }
 
     public function user() {
