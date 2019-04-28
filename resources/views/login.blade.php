@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Iniciar sesión | SafeCell</title>
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('css/login.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" >
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
@@ -16,7 +16,7 @@
 
                         <!-- Icon -->
                         <div class="fadeIn first">
-                            <img src="{{ secure_asset('images/logo.png') }}" id="icon" alt="User Icon" />
+                            <img src="{{ asset('images/logo.png') }}" id="icon" alt="User Icon" />
                         </div>
 
                         <!-- Login Form -->
