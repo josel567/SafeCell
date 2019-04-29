@@ -126,16 +126,26 @@ class DeviceController extends Controller
     {
         // Obtenemos los parametros de la request
         $params = $request->all();
+        $user = Auth::user();
 
-        $device = Device::find($params['device_id']);
+
+        $device = Device::where('id' , $params['device_id'])->where('user_id', $user->id)->first();
 
         try {
-            $device->fcm_token = $params['fcm_token'];
-            $device->save();
-            return response()->json([
-                'updated' => 'OK',
-                'new_device_fcm_token' => $device->fcm_token
-            ]);
+            if(!empty($device)) {
+                $device->fcm_token = $params['fcm_token'];
+                $device->save();
+                return response()->json([
+                    'updated' => 'OK',
+                    'new_device_fcm_token' => $device->fcm_token
+                ]);
+            } else {
+                return response()->json([
+                    'updated' => 'KO',
+                    'message' => "El dispositivo no existe."
+                ]);
+            }
+
         } catch (\Exception $e) {
             return response()->json([
                 'updated' => 'KO',
