@@ -16,6 +16,13 @@ class DeviceController extends Controller
         $params = $request->all();
 
         try {
+            $device = Device::where('imei', $params['imei'])->orWhere('fcm_token', $params['fcm_token'])->first();
+            if ($device != null) {
+                return response()->json([
+                    'added' => 'KO',
+                    'message' => "Ya existe un dispositivo con este Imei o token"
+                ]);
+            }
             $device = Device::create([
                 "user_id" => $user->id,
                 "alias" => $params['alias'],
@@ -100,6 +107,11 @@ class DeviceController extends Controller
         $userId = Auth::user()->id;
         try {
             $devices = Device::where('user_id', $userId)->get();
+            if (sizeof($devices) == 0) {
+                return response()->json([
+                    "message" => "Aún no dispones de ningún dispositivo asociado a este usuario."
+                ], 200);
+            }
             return response()->json([
                 "devices" => $devices
             ], 200);
