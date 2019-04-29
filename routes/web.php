@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/', 'welcomeController@index');
+Route::get('/', function () {
+    return view('login');
+});
+Route::post('/login', 'loginController@login');
