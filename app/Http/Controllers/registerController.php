@@ -20,18 +20,12 @@ class registerController extends Controller
             'base_uri' => $base_uri,
         ]);
 
-        $payload = array(
-            "name" => $params['name'],
-            "email" => $params['email'],
-            "password" => $params['password'],
-            "password_confirmation" => $params['password_confirmation']
-        );
-        $response = $client->post('/auth/signup', [
-            'debug' => TRUE,
-            'body' => json_encode($payload),
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'X-Requested-With' => 'XMLHttpRequest'
+        $response = $client->request('POST', $base_uri . "/auth/signup", [
+            'form_params' => [
+                "name" => $params['name'],
+                "email" => $params['email'],
+                "password" => $params['password'],
+                "password_confirmation" => $params['password_confirmation']
             ]
         ]);
 
