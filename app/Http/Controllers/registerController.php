@@ -29,8 +29,6 @@ class registerController extends Controller
             ]
         ]);
 
-        dd($response);
-
-        return true;
+        dd($response->getBody()->getContents());
     }
 }
