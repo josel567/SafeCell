@@ -26,7 +26,7 @@ dd($base_uri);
             "password" => $params['password'],
             "password_confirmation" => $params['password_confirmation']
         );
-        $response = $client->post('auth/signup', [
+        $response = $client->post('/auth/signup', [
             'debug' => TRUE,
             'body' => json_encode($payload),
             'headers' => [
