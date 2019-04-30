@@ -15,7 +15,7 @@ class registerController extends Controller
         } else {
             $base_uri = "https://safe-cell.herokuapp.com/api";
         }
-
+dd($base_uri);
         $client = new Client([
             'base_uri' => $base_uri,
         ]);
