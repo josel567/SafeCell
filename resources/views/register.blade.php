@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Iniciar sesión | SafeCell</title>
+        <title>Registro | SafeCell</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,16 +22,18 @@
                         </div>
 
                         <!-- Login Form -->
-                        <form action="/login" method="post">
+                        <form action="/register" method="post">
                             @csrf
+                            <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre de usuario">
                             <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
                             <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña">
-                            <input type="submit" class="fadeIn fourth" value="Iniciar sesión">
+                            <input type="password" id="password_confirmation" class="fadeIn third" name="password_confirmation" placeholder="Repetir contraseña">
+                            <input type="submit" class="fadeIn fourth" value="Registrarse">
                         </form>
 
                         <!-- Remind Passowrd -->
                         <div id="formFooter">
-                            <a class="underlineHover" href="/register">¿No tienes cuenta? Crear una ahora.</a>
+                            <a class="underlineHover" href="#">¿No tienes cuenta? Crear una ahora.</a>
                         </div>
 
                         @if (isset($error_message))
