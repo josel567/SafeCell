@@ -11,7 +11,7 @@ class registerController extends Controller
         $params = $request->all();
         $base_uri = "";
         if (env('APP_ENV') == "local") {
-            $base_uri = "192.168.5.160:8000/api";
+            $base_uri = "http://dev.safecell/api";
         } else {
             $base_uri = "https://safe-cell.herokuapp.com/api";
         }
