@@ -17,7 +17,7 @@ class loginController extends Controller
             $token = $user->createToken('Token Name')->accessToken;
             setcookie("acces_token", $token);
 
-            return view('dashboard');
+            return redirect()->action('dashboardController@index');
         } else {
             // Si no está logeado mostramos el login
             return view('login', ['info_message' => 'Usuario o contraseña inválidos.']);

@@ -20,3 +20,7 @@ Route::get('/register', function () {
 
 Route::post('/login', 'loginController@login');
 Route::post('/register', 'registerController@register');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/dashboard', 'dashboardController@index');
+});
