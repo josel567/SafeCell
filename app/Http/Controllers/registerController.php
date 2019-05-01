@@ -15,20 +15,35 @@ class registerController extends Controller
         } else {
             $base_uri = "https://safe-cell.herokuapp.com/api";
         }
-
         $client = new Client([
             'base_uri' => $base_uri,
-        ]);
-
-        $response = $client->request('POST', $base_uri . "/auth/signup", [
-            'form_params' => [
-                "name" => $params['name'],
-                "email" => $params['email'],
-                "password" => $params['password'],
-                "password_confirmation" => $params['password_confirmation']
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest'
             ]
         ]);
+        try {
+            $response = $client->request('POST', $base_uri . "/auth/signup", [
+                'form_params' => [
+                    "name" => $params['name'],
+                    "email" => $params['email'],
+                    "password" => $params['password'],
+                    "password_confirmation" => $params['password_confirmation']
+                ]
+            ]);
+            // Transform response in object
+            $response = json_decode($response->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $response = json_decode($e->getResponse()->getBody()->getContents());
+        }
 
-        dd($response->getBody()->getContents());
+
+        if ($response->message == "Successfully created user!") {
+            // Registro OK
+            return view('login', ['info_message' => 'Cuenta creada correctamente. Ya puedes iniciar sesión.']);
+        } else {
+            // Registro KO
+            return view('register', ['info_message' => 'Error al crear la cuenta. Revisa los datos.']);
+        }
     }
 }

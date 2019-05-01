@@ -34,10 +34,10 @@
                             <a class="underlineHover" href="/register">¿No tienes cuenta? Crear una ahora.</a>
                         </div>
 
-                        @if (isset($error_message))
+                        @if (isset($info_message))
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $error_message }}</strong>
+                                <strong>{{ $info_message }}</strong>
                             </div>
                         @endif
 

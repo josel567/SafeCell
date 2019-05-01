@@ -33,13 +33,13 @@
 
                         <!-- Remind Passowrd -->
                         <div id="formFooter">
-                            <a class="underlineHover" href="#">¿No tienes cuenta? Crear una ahora.</a>
+                            <a class="underlineHover" href="/login">¿Ya tienes una cuenta? Inicia sesión.</a>
                         </div>
 
-                        @if (isset($error_message))
+                        @if (isset($info_message))
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $error_message }}</strong>
+                                <strong>{{ $info_message }}</strong>
                             </div>
                         @endif
 

@@ -20,7 +20,7 @@ class loginController extends Controller
             return view('dashboard');
         } else {
             // Si no está logeado mostramos el login
-            return view('login', ['error_message' => 'Usuario o contraseña inválidos.']);
+            return view('login', ['info_message' => 'Usuario o contraseña inválidos.']);
         }
 
 
