@@ -31,32 +31,34 @@
                 <div class="col-12">
                     <h2 class="text-center">Aún no tienes dispositivos creados.</h2>
                 </div>
-                <div class="col-12 text-center mt-4">
-                    <h2 class="btn btn-secondary">Añadir dispositivo</h2>
-                </div>
             </div>
         @else
             <div class="row">
-            @foreach ($data['devices'] as $device)
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="text-muted"> {{$device['alias']}}</h5>
-                            <div class="metric-value d-block">
-                                <h2 class="mb-1">{{$device['brand']}}</h2>
+                @foreach ($data['devices'] as $device)
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-muted"> {{$device['alias']}}</h5>
+                                <div class="metric-value d-block">
+                                    <h2 class="mb-1">{{$device['brand']}}</h2>
+                                </div>
+                                <div class="metric-value d-block">
+                                    <h4 class="mb-1">{{$device['model']}}</h4>
+                                </div>
+                                <div class="metric-value d-block">
+                                    <p class="mb-1">Imei: {{$device['imei']}}</p>
+                                </div>
                             </div>
-                            <div class="metric-value d-block">
-                                <h4 class="mb-1">{{$device['model']}}</h4>
-                            </div>
-                            <div class="metric-value d-block">
-                                <p class="mb-1">Imei: {{$device['imei']}}</p>
-                            </div>
+                            <a href="#" class="btn btn-primary btn-block ">Administrar</a>
                         </div>
-                        <a href="#" class="btn btn-primary btn-block ">Administrar</a>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
         @endif
+        <div class="row">
+            <div class="col-12 text-center mt-4">
+                <a href="/adddevice" class="btn btn-secondary">Añadir dispositivo</a>
+            </div>
+        </div>
     </div>
 @endsection

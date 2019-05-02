@@ -23,4 +23,6 @@ Route::post('/register', 'registerController@register');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', 'dashboardController@index');
+    Route::get('/adddevice', 'dashboardController@showAddDevice');
+    Route::post('/adddevice', 'dashboardController@addDevice');
 });
