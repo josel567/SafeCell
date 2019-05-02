@@ -110,4 +110,25 @@ class dashboardController extends Controller
         }
 
     }
+
+    public function deleteDevice ($id) {
+
+        $client = new Client([
+            'base_uri' => $this->base_uri,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Authorization' => 'Bearer ' . $this->acces_token
+            ]
+        ]);
+        try {
+            $response = $client->request('DELETE', $this->base_uri . "/device/remove/" . $id);
+            // Transform response in object
+            $response = json_decode($response->getBody()->getContents(), true);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $response = json_decode($e->getResponse()->getBody()->getContents());
+        }
+
+        return redirect('/dashboard');
+    }
 }

@@ -25,4 +25,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', 'dashboardController@index');
     Route::get('/adddevice', 'dashboardController@showAddDevice');
     Route::post('/adddevice', 'dashboardController@addDevice');
+    Route::get('/deleteDevice/{id}', 'dashboardController@deleteDevice');
 });
