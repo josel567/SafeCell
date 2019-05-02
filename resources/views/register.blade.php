@@ -33,7 +33,7 @@
 
                         <!-- Remind Passowrd -->
                         <div id="formFooter">
-                            <a class="underlineHover" href="/login">¿Ya tienes una cuenta? Inicia sesión.</a>
+                            <a class="underlineHover" href="/">¿Ya tienes una cuenta? Inicia sesión.</a>
                         </div>
 
                         @if (isset($info_message))

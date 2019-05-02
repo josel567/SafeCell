@@ -1949,6 +1949,7 @@ Container / Wrapper
 
 .dashboard-content {
     padding: 30px 30px 60px 30px;
+    min-height: 88vh;
 }
 
 

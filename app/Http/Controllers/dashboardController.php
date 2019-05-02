@@ -34,6 +34,10 @@ class dashboardController extends Controller
             $devices = json_decode($e->getResponse()->getBody()->getContents());
         }
 
+        if (!isset($devices['devices'])) {
+            $devices['devices'] = 0;
+        }
+
         return view ('dashboard', ['data' => [
             'user' => $user,
             'devices' => $devices['devices']
