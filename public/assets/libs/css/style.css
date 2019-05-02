@@ -1951,7 +1951,13 @@ Container / Wrapper
     padding: 30px 30px 60px 30px;
     min-height: 88vh;
 }
-
+.delete-icon {
+    color: red;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
 
 /*-----------------------
 Splash Container / Wrapper

@@ -38,6 +38,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-body">
+                                <i class="fas fa-times delete-icon"></i>
                                 <h5 class="text-muted"> {{$device['alias']}}</h5>
                                 <div class="metric-value d-block">
                                     <h2 class="mb-1">{{$device['brand']}}</h2>
