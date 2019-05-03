@@ -153,4 +153,40 @@ class DeviceController extends Controller
             ], 400);
         }
     }
+
+    public function updateDeviceLocation (Request $request) {
+        // Obtenemos los parametros de la request
+        $params = $request->all();
+        $user = Auth::user();
+
+        $device = Device::where('imei' , $params['imei'])->where('user_id', $user->id)->first();
+
+        try {
+            if(!empty($device)) {
+
+                $device->lon = $params['lon'];
+                $device->lat = $params['lat'];
+                $device->save();
+
+                return response()->json([
+                    'updated' => 'OK',
+                    'new_location' => [
+                        'lon' => $device->lon,
+                        'lat' => $device->lat
+                    ]
+                ]);
+            } else {
+                return response()->json([
+                    'updated' => 'KO',
+                    'message' => "El dispositivo no existe."
+                ]);
+            }
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'updated' => 'KO',
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
 }
