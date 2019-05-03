@@ -50,7 +50,7 @@
                                     <p class="mb-1">Imei: {{$device['imei']}}</p>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-primary btn-block ">Administrar</a>
+                            <a href="/device/{{$device['id']}}" class="btn btn-primary btn-block ">Administrar</a>
                         </div>
                     </div>
                 @endforeach

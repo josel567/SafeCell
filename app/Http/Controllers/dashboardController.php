@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
@@ -130,5 +131,18 @@ class dashboardController extends Controller
         }
 
         return redirect('/dashboard');
+    }
+
+    public function showDeviceDetails (Request $request, $id) {
+        $device = Device::find($id);
+        $user = auth::user();
+
+        return view('device', [
+           "data" => [
+               "user" => $user,
+               "device" => $device
+           ]
+        ]);
+
     }
 }
