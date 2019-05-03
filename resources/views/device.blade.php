@@ -26,6 +26,36 @@
     <!-- end pageheader  -->
     <!-- ============================================================== -->
     <div class="ecommerce-widget">
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- basic map -->
+            <!-- ============================================================== -->
+            <div class="col-xl-6">
+                <div class="card">
+                    <h5 class="card-header text-center">Geolocalización de su dispositivo en tiempo real</h5>
+                    <div class="card-body">
+                        <div id="map" class="gmaps"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end basic map -->
+            <!-- ============================================================== -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <!-- ============================================================== -->
+                <!-- map events -->
+                <!-- ============================================================== -->
+                <div class="card">
+                    <h5 class="card-header text-center">Servicios activos</h5>
+                    <div class="card-body">
+                        <div id="" class="gmaps"></div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end map events -->
+                <!-- ============================================================== -->
+            </div>
+        </div>
 
     </div>
 @endsection

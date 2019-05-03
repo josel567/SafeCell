@@ -51,9 +51,11 @@ class dashboardController extends Controller
 
     public function showAddDevice () {
         $user = Auth::user();
-        return view('adddevice', ['data' => [
-            'user' => $user
-        ]]);
+        return view('adddevice', [
+                'data' => [
+                'user' => $user
+            ]
+        ]);
     }
 
     public function addDevice(Request $request) {
@@ -133,7 +135,7 @@ class dashboardController extends Controller
         return redirect('/dashboard');
     }
 
-    public function showDeviceDetails (Request $request, $id) {
+    public function showDeviceDetails ($id) {
         $device = Device::find($id);
         $user = auth::user();
 
