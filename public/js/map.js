@@ -7,7 +7,7 @@ window.onload = function() {
                 initMap(response.location.lat, response.location.lon);
             }
         };
-        xhttp.open("GET", "http://dev.safecell/api/device/getDeviceLocation/" + appSettings.deviceId, true);
+        xhttp.open("GET", "https://safe-cell.herokuapp.com/api/device/getDeviceLocation/" + appSettings.deviceId, true);
         xhttp.setRequestHeader("Authorization", "Bearer " + appSettings.accesToken);
         xhttp.send();
     }
