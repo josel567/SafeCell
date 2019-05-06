@@ -189,4 +189,21 @@ class DeviceController extends Controller
             ], 400);
         }
     }
+
+    public function getDeviceLocation (Request $request, $id) {
+        $device = Device::find($id);
+
+        if (empty($device)) {
+            return response()->json([
+                'message' => "El dispositivo no existe."
+            ]);
+        } else {
+            return response()->json([
+                'location' => [
+                    'lat' => $device->lat,
+                    'lon' => $device->lon
+                ]
+            ]);
+        }
+    }
 }
