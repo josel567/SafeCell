@@ -16,6 +16,6 @@ window.onload = function() {
     function initMap(lat, lon) {
 
             let mapdiv = document.getElementById('map');
-            mapdiv.innerHTML = "<iframe src=\"http://maps.google.com/maps?q=" +lat + "," + lon + "&z=15&output=embed\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"border:0\"></iframe>";
+            mapdiv.innerHTML = "<iframe src=\"https://maps.google.com/maps?q=" +lat + "," + lon + "&z=15&output=embed\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"border:0\"></iframe>";
     }
 }
