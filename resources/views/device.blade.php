@@ -60,7 +60,38 @@
                 <div class="card">
                     <h5 class="card-header text-center">Servicios activos</h5>
                     <div class="card-body">
-                        <div id="" class="gmaps"></div>
+                        <div id="servicesStatuses" class="gmaps">
+                            @if(isset($data['serviceStatuses']['message']))
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <h3>No hay servicios añadidos a este dispositivo.</h3>
+                                    </div>
+                                </div>
+                            @else
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Servicio</th>
+                                        <th scope="col">Estado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                @foreach($data['serviceStatuses']['services'] as $serviceStatus)
+                                        <tr>
+                                            <td scope="col">{{$serviceStatus->name}}</td>
+                                            <td scope="col">{{$serviceStatus->status}}</td>
+                                        </tr>
+                                @endforeach
+                                        </tbody>
+                                </table>
+                            @endif
+
+                            <div class="row">
+                                <div class="col-12 text-center card-body">
+                                    <a href="#" class="btn btn-primary"> Añadir servicio</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- ============================================================== -->

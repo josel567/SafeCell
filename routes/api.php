@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::post('add', 'ServiceController@add');
         Route::patch('update', 'ServiceController@update');
         Route::delete('delete', 'ServiceController@delete');
-        Route::get('getStatuses', 'ServiceController@getStatuses');
+        Route::get('getStatuses/{id}', 'ServiceController@getStatuses');
     });
 
 });

@@ -156,10 +156,9 @@ class ServiceController extends Controller
         }
     }
 
-    public function getStatuses (Request $request) {
+    public function getStatuses ($id) {
         $user = Auth::user();
-        $params = $request->all();
-        $device = Device::where('id', $params['device_id'])->first();
+        $device = Device::where('id', $id)->first();
 
         if (empty($device)) {
             return response()->json([

@@ -139,10 +139,27 @@ class dashboardController extends Controller
         $device = Device::find($id);
         $user = auth::user();
 
+        $client = new Client([
+            'base_uri' => $this->base_uri,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Authorization' => 'Bearer ' . $this->acces_token
+            ]
+        ]);
+        try {
+            $response = $client->request('GET', $this->base_uri . "/service/getStatuses/". $device->id);
+            // Transform response in object
+            $serviceStatuses = json_decode($response->getBody()->getContents(), true);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $serviceStatuses = json_decode($e->getResponse()->getBody()->getContents());
+        }
+
         return view('device', [
            "data" => [
                "user" => $user,
-               "device" => $device
+               "device" => $device,
+               "serviceStatuses" => $serviceStatuses
            ]
         ]);
 
