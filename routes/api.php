@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::delete('remove/{id}', 'DeviceController@remove');
         Route::get('all', 'DeviceController@getAll');
         Route::patch('updateDeviceFcmToken', 'DeviceController@updateDeviceFcmToken');
-        Route::patch('updateDeviceLocation', 'DeviceController@updateDeviceLocation');
+        Route::post('updateDeviceLocation', 'DeviceController@updateDeviceLocation');
         Route::get('getDeviceLocation/{id}', 'DeviceController@getDeviceLocation');
     });
 
