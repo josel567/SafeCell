@@ -159,13 +159,16 @@ class DeviceController extends Controller
         $params = $request->all();
         $user = Auth::user();
 
+        $lon = (float) $params['lon'];
+        $lat = (float) $params['lat'];
+
         $device = Device::where('imei' , $params['imei'])->where('user_id', $user->id)->first();
 
         try {
             if(!empty($device)) {
 
-                $device->lon = $params['lon'];
-                $device->lat = $params['lat'];
+                $device->lon = $lon;
+                $device->lat = $lat;
                 $device->save();
 
                 return response()->json([
@@ -190,7 +193,7 @@ class DeviceController extends Controller
         }
     }
 
-    public function getDeviceLocation (Request $request, $id) {
+    public function getDeviceLocation ($id) {
         $device = Device::find($id);
 
         if (empty($device)) {
