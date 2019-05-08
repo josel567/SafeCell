@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <select id="select_service" class="form-control" name="service_name">
                                     <option value="internet">Internet</option>
-                                    <option value="gps" disabled>Gps</option>
+                                    <option value="gps">Gps</option>
                                     <option hidden>Wifi</option>
                                 </select>
                             </div>
@@ -58,16 +58,11 @@
                                 </div>
                             </div>
                         </form>
-
                         @if(isset($data['response']->message))
-                            @if($data['response']->message == "Ese servicio ya está asociado al dispositivo.")
-                                <div class="alert alert-danger alert-block">
-                            @else
-                                <div class="alert alert-success alert-block">
-                            @endif
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $data['response']->message }}</strong>
-                                </div>
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ $data['response']->message }}</strong>
+                            </div>
                         @endif
                     </div>
                 </div>

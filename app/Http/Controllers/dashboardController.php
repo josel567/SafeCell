@@ -200,7 +200,7 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents());
         }
-
+        
         return view('addservice', [
             "data" => [
                 "response" => $response,
@@ -208,5 +208,31 @@ class dashboardController extends Controller
                 "user" => $user
             ]
         ]);
+    }
+
+    public function deleteService($device_id, $service_name) {
+
+        $client = new Client([
+            'base_uri' => $this->base_uri,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Authorization' => 'Bearer ' . $this->acces_token
+            ]
+        ]);
+        try {
+            $response = $client->request('DELETE', $this->base_uri . "/service/delete", [
+                'form_params' => [
+                    "device_id" => $device_id,
+                    "service_name" => $service_name
+                ]
+            ]);
+            // Transform response in object
+            $response = json_decode($response->getBody()->getContents(), true);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $response = json_decode($e->getResponse()->getBody()->getContents());
+        }
+
+        return redirect('/device/' . $device_id);
     }
 }

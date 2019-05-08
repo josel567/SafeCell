@@ -71,25 +71,30 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Servicio</th>
-                                        <th scope="col">Estado</th>
+                                        <th>Servicio</th>
+                                        <th>Estado</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                 @foreach($data['serviceStatuses']['services'] as $serviceStatus)
                                         <tr>
-                                            <td scope="col">{{$serviceStatus['name']}}</td>
+                                            <td>{{$serviceStatus['name']}}</td>
                                             @if($serviceStatus['status'])
-                                            <td scope="col">Activado</td>
+                                                <td>Activado</td>
                                             @else
-                                                <td scope="col">Desactivado</td>
+                                                <td>Desactivado</td>
                                             @endif
+                                                <td class="text-right">
+                                                    <a href="/deleteService/{{$data['device']->id}}/{{$serviceStatus['name']}}">
+                                                        <i class="fas fa-times"></i>
+                                                    </a>
+                                                </td>
                                         </tr>
                                 @endforeach
                                         </tbody>
                                 </table>
                             @endif
-
                             <div class="row">
                                 <div class="col-12 text-center card-body">
                                     <a href="/addservice/{{$data['device']->id}}" class="btn btn-primary"> Añadir servicio</a>

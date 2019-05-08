@@ -30,4 +30,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/addservice/{id}', 'dashboardController@showAddService');
     Route::get('/logout', 'loginController@logout');
     Route::post('/addService', 'dashboardController@addService');
+    Route::get('/deleteService/{device_id}/{service_name}', 'dashboardController@deleteService');
 });
