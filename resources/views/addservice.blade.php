@@ -34,20 +34,21 @@
                 <div class="card">
                     <h5 class="card-header text-center">Servicios disponibles</h5>
                     <div class="card-body">
-                        <form action="/adddevice"  method="POST" id="basicform" data-parsley-validate="">
+                        <form action="/api/service/add"  method="POST" id="basicform" data-parsley-validate="">
                             @csrf
                             <div class="form-group">
-                                <select id="select_service" class="form-control">
-                                    <option>Internet</option>
-                                    <option disabled>Gps</option>
+                                <select id="select_service" class="form-control" name="service_name">
+                                    <option value="internet">Internet</option>
+                                    <option value="gps" disabled>Gps</option>
                                     <option hidden>Wifi</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select id="gestionar_servicio" class="form-control">
-                                    <option>Activar</option>
-                                    <option>Desactivar</option>
+                                <select id="gestionar_servicio" class="form-control" name="is_active">
+                                    <option value="true">Activar</option>
+                                    <option value="false">Desactivar</option>
                                 </select>
+                                <input type="text" name="device_id" value="{{$data['device_id']}}" hidden>
                             </div>
                             <div class="row">
                                 <div class="col pl-0">
