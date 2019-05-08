@@ -34,7 +34,7 @@
                 <div class="card">
                     <h5 class="card-header text-center">Servicios disponibles</h5>
                     <div class="card-body">
-                        <form action="/api/service/add"  method="POST" id="basicform" data-parsley-validate="">
+                        <form action="/addService"  method="POST" id="basicform" data-parsley-validate="">
                             @csrf
                             <div class="form-group">
                                 <select id="select_service" class="form-control" name="service_name">
@@ -51,13 +51,24 @@
                                 <input type="text" name="device_id" value="{{$data['device_id']}}" hidden>
                             </div>
                             <div class="row">
-                                <div class="col pl-0">
-                                    <p class="text-right">
-                                        <button type="submit" class="btn btn-space btn-primary">Guardar cambios</button>
+                                <div class="col">
+                                    <p class="text-center">
+                                        <button type="submit" class="btn btn-space btn-primary mb-3 mt-2">Guardar cambios</button>
                                     </p>
                                 </div>
                             </div>
                         </form>
+
+                        @if(isset($data['response']->message))
+                            @if($data['response']->message == "Ese servicio ya está asociado al dispositivo.")
+                                <div class="alert alert-danger alert-block">
+                            @else
+                                <div class="alert alert-success alert-block">
+                            @endif
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $data['response']->message }}</strong>
+                                </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -165,7 +165,7 @@ class dashboardController extends Controller
 
     }
 
-    public function addService ($device_id) {
+    public function showAddService ($device_id) {
         $user = Auth::user();
 
         return view('addservice', [
@@ -173,6 +173,40 @@ class dashboardController extends Controller
                "device_id" => $device_id,
                "user" => $user
            ]
+        ]);
+    }
+
+    public function addService (Request $request) {
+        $user = Auth::user();
+        $params = $request->all();
+        $client = new Client([
+            'base_uri' => $this->base_uri,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Authorization' => 'Bearer ' . $this->acces_token
+            ]
+        ]);
+        try {
+            $response = $client->request('POST', $this->base_uri . "/service/add", [
+                'form_params' => [
+                    "device_id" => $params['device_id'],
+                    "service_name" => $params['service_name'],
+                    "is_active" => $params['is_active']
+                ]
+            ]);
+            // Transform response in object
+            $response = json_decode($response->getBody()->getContents(), true);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $response = json_decode($e->getResponse()->getBody()->getContents());
+        }
+
+        return view('addservice', [
+            "data" => [
+                "response" => $response,
+                "device_id" => $params['device_id'],
+                "user" => $user
+            ]
         ]);
     }
 }
