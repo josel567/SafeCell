@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 Route::get('/register', function () {
     return view('register');
 });
@@ -27,4 +27,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/adddevice', 'dashboardController@addDevice');
     Route::get('/deleteDevice/{id}', 'dashboardController@deleteDevice');
     Route::get('/device/{id}', 'dashboardController@showDeviceDetails');
+    Route::get('/addservice/{id}', 'dashboardController@addService');
+    Route::get('/logout', 'loginController@logout');
 });

@@ -164,4 +164,15 @@ class dashboardController extends Controller
         ]);
 
     }
+
+    public function addService ($device_id) {
+        $user = Auth::user();
+
+        return view('addservice', [
+           "data" => [
+               "device_id" => $device_id,
+               "user" => $user
+           ]
+        ]);
+    }
 }

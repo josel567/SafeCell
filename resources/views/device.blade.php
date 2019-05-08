@@ -78,8 +78,12 @@
                                     <tbody>
                                 @foreach($data['serviceStatuses']['services'] as $serviceStatus)
                                         <tr>
-                                            <td scope="col">{{$serviceStatus->name}}</td>
-                                            <td scope="col">{{$serviceStatus->status}}</td>
+                                            <td scope="col">{{$serviceStatus['name']}}</td>
+                                            @if($serviceStatus['status'])
+                                            <td scope="col">Activado</td>
+                                            @else
+                                                <td scope="col">Desactivado</td>
+                                            @endif
                                         </tr>
                                 @endforeach
                                         </tbody>
@@ -88,7 +92,7 @@
 
                             <div class="row">
                                 <div class="col-12 text-center card-body">
-                                    <a href="#" class="btn btn-primary"> Añadir servicio</a>
+                                    <a href="/addservice/{{$data['device']->id}}" class="btn btn-primary"> Añadir servicio</a>
                                 </div>
                             </div>
                         </div>

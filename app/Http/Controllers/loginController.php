@@ -23,6 +23,10 @@ class loginController extends Controller
             return view('login', ['info_message' => 'Usuario o contraseña inválidos.']);
         }
 
+    }
 
+    public function logout() {
+        Auth::logout();
+        return redirect('/');
     }
 }
