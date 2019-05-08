@@ -200,7 +200,7 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents());
         }
-        
+
         return view('addservice', [
             "data" => [
                 "response" => $response,
