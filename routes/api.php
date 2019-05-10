@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::patch('updateDeviceFcmToken', 'DeviceController@updateDeviceFcmToken');
         Route::post('updateDeviceLocation', 'DeviceController@updateDeviceLocation');
         Route::get('getDeviceLocation/{id}', 'DeviceController@getDeviceLocation');
+        Route::get('getDeviceIdByImei/{imei}', 'DeviceController@getDeviceIdByImei');
     });
 
     Route::group(['prefix' => 'service'], function () {

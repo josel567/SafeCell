@@ -209,4 +209,25 @@ class DeviceController extends Controller
             ]);
         }
     }
+
+    public function getDeviceIdByImei($imei) {
+        $user = Auth::user();
+        $device = Device::where('imei', $imei)->first();
+
+        if (empty($device)) {
+            return response()->json([
+                'message' => "El dispositivo no existe."
+            ]);
+        } else {
+            if ($user->id == $device->user_id) {
+                return response()->json([
+                    'device_id' => $device->id
+                ]);
+            } else {
+                return response()->json([
+                    'message' => "El dispositivo no existe."
+                ]);
+            }
+        }
+    }
 }
