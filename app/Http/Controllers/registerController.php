@@ -33,6 +33,8 @@ class registerController extends Controller
             ]);
             // Transform response in object
             $response = json_decode($response->getBody()->getContents());
+
+
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents());
         }

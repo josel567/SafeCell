@@ -59,18 +59,23 @@
                                 </div>
                             </div>
                         </form>
-                        @if(isset($data['response']->message))
-                            <div class="alert alert-danger alert-block">
+
+                        @if(isset($data['message']))
+                            @if($data['message'] == 'Servicio añadido correctamente.')
+                                <div class="alert alert-success alert-block mt-2">
+                            @else
+                                <div class="alert alert-danger alert-block mt-2">
+                            @endif
                                 <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $data['response']->message }}</strong>
+                                <strong>{{ $data['message'] }}</strong>
                             </div>
-                        @endif
+                            @endif
+                            </div>
                     </div>
                 </div>
             </div>
+            <!-- ============================================================== -->
+            <!-- end Formulario seleccionar servicio -->
+            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- end Formulario seleccionar servicio -->
-        <!-- ============================================================== -->
-    </div>
 @endsection

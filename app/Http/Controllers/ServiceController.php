@@ -50,7 +50,7 @@ class ServiceController extends Controller
             $device->services()->attach($service->id, ['is_active'=>$params['is_active']]);
             return response()->json([
                 'message' => "Servicio añadido correctamente.",
-            ], 200);
+            ]);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
@@ -58,6 +58,7 @@ class ServiceController extends Controller
         }
 
     }
+
 
     public function update (Request $request) {
         $user = Auth::user();

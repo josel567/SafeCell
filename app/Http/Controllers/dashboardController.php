@@ -198,12 +198,11 @@ class dashboardController extends Controller
             // Transform response in object
             $response = json_decode($response->getBody()->getContents(), true);
         } catch (\GuzzleHttp\Exception\RequestException $e) {
-            $response = json_decode($e->getResponse()->getBody()->getContents());
+            $response = json_decode($e->getResponse()->getBody()->getContents(), true);
         }
-
         return view('addservice', [
             "data" => [
-                "response" => $response,
+                "message" => $response['message'],
                 "device_id" => $params['device_id'],
                 "user" => $user
             ]
