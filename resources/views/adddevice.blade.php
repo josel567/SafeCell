@@ -55,9 +55,9 @@
 
                             <div class="row">
                                 <div class="col pl-0">
-                                    <p class="text-right">
-                                        <button type="submit" class="btn btn-space btn-primary">Añadir dispositivo</button>
-                                        <a href="/dashboard" class="btn btn-space btn-secondary">Regresar</a>
+                                    <p class="text-center">
+                                        <button type="submit" class="btn btn-space btn-safeCell">Añadir dispositivo</button>
+                                        <a href="/dashboard" class="btn btn-space btn-safeCell">Regresar</a>
                                     </p>
                                 </div>
                             </div>

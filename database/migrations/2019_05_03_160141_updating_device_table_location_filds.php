@@ -13,9 +13,11 @@ class UpdatingDeviceTableLocationFilds extends Migration
      */
     public function up()
     {
-        Schema::table('devices', function (Blueprint $table) {
-            $table->dropColumn(['lat', 'lon']);
-        });
+        if (Schema::hasColumn('devices', 'lat')) {
+            Schema::table('devices', function (Blueprint $table) {
+                $table->dropColumn(['lat', 'lon']);
+            });
+        }
     }
 
     /**
@@ -25,6 +27,6 @@ class UpdatingDeviceTableLocationFilds extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('devices');
     }
 }

@@ -53,7 +53,8 @@
                             <div class="row">
                                 <div class="col">
                                     <p class="text-center">
-                                        <button type="submit" class="btn btn-space btn-primary mb-3 mt-2">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-space btn-safeCell mb-3 mt-2">Guardar cambios</button>
+                                        <a href="/device/{{$data['device_id']}}" class="btn btn-space btn-safeCell">Cancelar</a>
                                     </p>
                                 </div>
                             </div>

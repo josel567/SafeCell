@@ -71,21 +71,21 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Servicio</th>
-                                        <th>Estado</th>
-                                        <th></th>
+                                        <th class="col-4">Servicio</th>
+                                        <th class="col-4 text-center">Estado</th>
+                                        <th class="col-4"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                 @foreach($data['serviceStatuses']['services'] as $serviceStatus)
                                         <tr>
-                                            <td>{{$serviceStatus['name']}}</td>
+                                            <td class="col-4">{{$serviceStatus['name']}}</td>
                                             @if($serviceStatus['status'])
-                                                <td>Activado</td>
+                                                <td class="col-4 text-center">Activado</td>
                                             @else
-                                                <td>Desactivado</td>
+                                                <td class="col-4 text-center">Desactivado</td>
                                             @endif
-                                                <td class="text-right">
+                                                <td class="col-4 text-right">
                                                     <a href="/deleteService/{{$data['device']->id}}/{{$serviceStatus['name']}}">
                                                         <i class="fas fa-times"></i>
                                                     </a>
@@ -97,7 +97,7 @@
                             @endif
                             <div class="row">
                                 <div class="col-12 text-center card-body">
-                                    <a href="/addservice/{{$data['device']->id}}" class="btn btn-primary"> Añadir servicio</a>
+                                    <a href="/addservice/{{$data['device']->id}}" class="btn btn-safeCell"> Añadir servicio</a>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">Para terminar la configuración del dispositivo descarga la aplicación en el siguiente enlace e instalala en el terminal.</p>
-                        <a href="{{ asset('files/app-release-unsigned.apk') }}" class="btn btn-primary">Descargar</a>
+                        <a href="{{ asset('files/app-release-unsigned.apk') }}" class="btn btn-safeCell">Descargar</a>
                     </div>
                 </div>
             </div>
