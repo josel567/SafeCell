@@ -6,8 +6,8 @@ html, body, .content {
     height: 100%;
 }
 .content {
-    background-image: url("/images/login-background.jpg");
-    background-size: contain;
+    background-image: url("/images/background.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: left;
     background-color: #fbc150;
@@ -93,7 +93,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #56baed;
+    background-color: #6f527b;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -115,7 +115,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #39ace7;
+    background-color: #65327b;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {

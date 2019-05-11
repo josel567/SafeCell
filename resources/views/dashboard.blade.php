@@ -33,7 +33,7 @@
                 </div>
             </div>
         @else
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach ($data['devices'] as $device)
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">
@@ -50,7 +50,7 @@
                                     <p class="mb-1">Imei: {{$device['imei']}}</p>
                                 </div>
                             </div>
-                            <a href="/device/{{$device['id']}}" class="btn btn-primary btn-block ">Administrar</a>
+                            <a href="/device/{{$device['id']}}" class="btn btn-safeCell btn-block ">Administrar</a>
                         </div>
                     </div>
                 @endforeach
@@ -58,7 +58,7 @@
         @endif
         <div class="row">
             <div class="col-12 text-center mt-4">
-                <a href="/adddevice" class="btn btn-secondary">Añadir dispositivo</a>
+                <a href="/adddevice" class="btn btn-safeCell">Añadir dispositivo</a>
             </div>
         </div>
     </div>

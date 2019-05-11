@@ -19,6 +19,16 @@ class CreatingServicesTables extends Migration
             $table->string('description');
             $table->timestamps();
         });
+        DB::table('services')->insert(
+            [
+                ['name' => 'internet',
+                'description' => ''
+                ],
+                ['name' => 'gps',
+                'description' => ''
+                ],
+            ]
+        );
     }
 
     /**
