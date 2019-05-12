@@ -15,8 +15,8 @@
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name"> {{$data['user']->name}} </h5>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Mi cuenta</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Configuración</a>
+                        <a class="dropdown-item" href="/enConstruccion"><i class="fas fa-user mr-2"></i>Mi cuenta</a>
+                        <a class="dropdown-item" href="/enConstruccion"><i class="fas fa-cog mr-2"></i>Configuración</a>
                         <a class="dropdown-item" href="/logout"><i class="fas fa-power-off mr-2"></i>Cerrar sesión</a>
                     </div>
                 </li>

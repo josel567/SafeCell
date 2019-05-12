@@ -59,18 +59,16 @@
                                 </div>
                             </div>
                         </form>
-
                         @if(isset($data['message']))
                             @if($data['message'] == 'Servicio añadido correctamente.')
                                 <div class="alert alert-success alert-block mt-2">
                             @else
                                 <div class="alert alert-danger alert-block mt-2">
                             @endif
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $data['message'] }}</strong>
-                            </div>
-                            @endif
-                            </div>
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $data['message'] }}</strong>
+                                </div>
+                        @endif
                     </div>
                 </div>
             </div>
