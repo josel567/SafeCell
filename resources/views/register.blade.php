@@ -35,12 +35,18 @@
                         <div id="formFooter">
                             <a class="underlineHover" href="/">¿Ya tienes una cuenta? Inicia sesión.</a>
                         </div>
-
-                        @if (isset($info_message))
+                        @if (isset($success_message))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ $success_message }}</strong>
+                            </div>
+                        @endif
+                        @if(isset($error_message))
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $info_message }}</strong>
+                                <strong>{{ $error_message }}</strong>
                             </div>
+
                         @endif
 
                     </div>
@@ -48,3 +54,4 @@
             </div>
     </body>
 </html>
+

@@ -230,4 +230,12 @@ class DeviceController extends Controller
             }
         }
     }
+    public function underConstruction () {
+        return view('enConstruccion');
+    }
+
+    public function ayuda () {
+        return view('ayuda');
+    }
+
 }

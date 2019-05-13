@@ -17,10 +17,10 @@
                         <a class="nav-link active" href="/dashboard"><i class="fa fa-fw fa-user-circle"></i>Inicio <span class="badge badge-success">6</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#"><i class="fa fa-fw fa-user-circle"></i>Estadísitcas <span class="badge badge-success">6</span></a>
+                        <a class="nav-link" href="/enConstruccion"><i class="fa fa-fw fa-user-circle"></i>Estadísitcas <span class="badge badge-success">6</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#"><i class="fa fa-fw fa-user-circle"></i>Ayuda<span class="badge badge-success">6</span></a>
+                        <a class="nav-link" href="/ayuda"><i class="fa fa-fw fa-user-circle"></i>Cómo empezar<span class="badge badge-success">6</span></a>
                     </li>
                 </ul>
             </div>

@@ -234,4 +234,5 @@ class dashboardController extends Controller
 
         return redirect('/device/' . $device_id);
     }
+
 }

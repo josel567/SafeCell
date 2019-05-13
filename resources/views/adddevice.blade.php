@@ -25,12 +25,12 @@
     <!-- ============================================================== -->
     <!-- end pageheader  -->
     <!-- ============================================================== -->
-    <div class="ecommerce-widget">
+    <div class="">
         <div class="row mt-5">
             <!-- ============================================================== -->
             <!-- Formulario añadir dispositivo -->
             <!-- ============================================================== -->
-            <div class="col-xl-3 mx-auto">
+            <div class="col-xs-12 col-lg-4 m-auto">
                 <div class="card">
                     <h5 class="card-header">Datos del dispositivo:</h5>
                     <div class="card-body">
