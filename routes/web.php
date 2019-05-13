@@ -31,15 +31,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/logout', 'loginController@logout');
     Route::post('/addService', 'dashboardController@addService');
     Route::get('/deleteService/{device_id}/{service_name}', 'dashboardController@deleteService');
+    Route::get('/ayuda','dashboardController@ayuda');
+    Route::get('/enConstruccion','dashboardController@enConstruccion');
 
 });
-
-Route::get('/ayuda','DeviceController@ayuda');
-
-Route::get('/enConstruccion', function () {
-    return view('enConstruccion');
-});
-
-/*Route::get('/ayuda', function () {
-    return view('ayuda');
-});*/

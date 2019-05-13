@@ -18,7 +18,7 @@
 
                         <!-- Icon -->
                         <div class="fadeIn first">
-                            <img src="{{ asset('images/logo.png') }}" id="icon" alt="User Icon" />
+                            <img src="{{ asset('images/logo_safecell.png') }}" id="icon" alt="User Icon" />
                         </div>
 
                         <!-- Login Form -->
@@ -38,6 +38,12 @@
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $info_message }}</strong>
+                            </div>
+                        @endif
+                        @if (isset($success_message))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ $success_message }}</strong>
                             </div>
                         @endif
 

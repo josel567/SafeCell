@@ -18,7 +18,7 @@
 
                         <!-- Icon -->
                         <div class="fadeIn first">
-                            <img src="{{ asset('images/logo.png') }}" id="icon" alt="User Icon" />
+                            <img src="{{ asset('images/logo_safecell.png') }}" id="icon" alt="User Icon" />
                         </div>
 
                         <!-- Login Form -->
@@ -35,12 +35,6 @@
                         <div id="formFooter">
                             <a class="underlineHover" href="/">¿Ya tienes una cuenta? Inicia sesión.</a>
                         </div>
-                        @if (isset($success_message))
-                            <div class="alert alert-success alert-block">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <strong>{{ $success_message }}</strong>
-                            </div>
-                        @endif
                         @if(isset($error_message))
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>

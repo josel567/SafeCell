@@ -42,7 +42,7 @@ class registerController extends Controller
 
         if ($response->message == "Successfully created user!") {
             // Registro OK
-            return view('register', ['success_message' => 'Cuenta creada correctamente. Ya puedes iniciar sesión.']);
+            return view('login', ['success_message' => 'Cuenta creada correctamente. Ya puedes iniciar sesión.']);
         } else {
             // Registro KO
             return view('register', ['error_message' => 'Error al crear la cuenta. Revisa los datos.']);
