@@ -234,5 +234,22 @@ class dashboardController extends Controller
 
         return redirect('/device/' . $device_id);
     }
+    public function enConstruccion () {
+        $user = Auth::user();
+        return view('enConstruccion',[
+            'data' => [
+                'user' => $user
+            ]
+        ]);
+    }
+
+    public function ayuda () {
+        $user = Auth::user();
+        return view('ayuda',[
+            'data' => [
+                'user' => $user
+            ]
+        ]);
+    }
 
 }
