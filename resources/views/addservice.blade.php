@@ -30,7 +30,7 @@
         <!-- Formulario seleccionar servicio -->
         <!-- ============================================================== -->
         <div class="row mt-5">
-            <div class="col-xl-3 mx-auto">
+            <div class="col-lg-4 mx-auto">
                 <div class="card">
                     <h5 class="card-header text-center">Servicios disponibles</h5>
                     <div class="card-body">
@@ -38,6 +38,7 @@
                             @csrf
                             <div class="form-group">
                                 <select id="select_service" class="form-control" name="service_name">
+                                    <option value="" selected disabled> Selecciona un servicio</option>
                                     <option value="internet">Internet</option>
                                     <option value="gps">Gps</option>
                                     <option hidden>Wifi</option>
@@ -45,6 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <select id="gestionar_servicio" class="form-control" name="is_active">
+                                    <option value="" selected disabled> Selecciona un valor por defecto</option>
                                     <option value="true">Activar</option>
                                     <option value="false">Desactivar</option>
                                 </select>
@@ -52,8 +54,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <p class="text-center">
-                                        <button type="submit" class="btn btn-space btn-safeCell mb-3 mt-2">Guardar cambios</button>
+                                    <p class="text-center mt-2">
+                                        <button type="submit" class="btn btn-space btn-safeCell">Guardar cambios</button>
                                         <a href="/device/{{$data['device_id']}}" class="btn btn-space btn-safeCell">Cancelar</a>
                                     </p>
                                 </div>
