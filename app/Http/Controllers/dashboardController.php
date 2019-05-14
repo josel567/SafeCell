@@ -251,5 +251,13 @@ class dashboardController extends Controller
             ]
         ]);
     }
+    public function nosotros () {
+        $user = Auth::user();
+        return view('nosotros',[
+            'data' => [
+                'user' => $user
+            ]
+        ]);
+    }
 
 }

@@ -33,5 +33,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/deleteService/{device_id}/{service_name}', 'dashboardController@deleteService');
     Route::get('/ayuda','dashboardController@ayuda');
     Route::get('/enConstruccion','dashboardController@enConstruccion');
+    Route::get('/nosotros','dashboardController@nosotros');
 
 });
