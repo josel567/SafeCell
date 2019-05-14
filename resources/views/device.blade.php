@@ -68,7 +68,7 @@
                             @else
                                 <table class="table table-striped">
                                     <thead>
-                                    <tr>
+                                    <tr class="d-flex">
                                         <th class="col-4">Servicio</th>
                                         <th class="col-4 text-center">Estado</th>
                                         <th class="col-4"></th>
@@ -76,7 +76,7 @@
                                     </thead>
                                     <tbody>
                                 @foreach($data['serviceStatuses']['services'] as $serviceStatus)
-                                        <tr>
+                                        <tr class="d-flex">
                                             <td class="col-4">{{$serviceStatus['name']}}</td>
                                             @if($serviceStatus['status'])
                                                 <td class="col-4 text-center">Activado</td>
