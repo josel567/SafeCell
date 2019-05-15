@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputUserName">Imei</label>
-                                <input id="inputUserName" type="text" name="imei" data-parsley-trigger="change" required data-toggle="tooltip" data-html="true" title="Para conseguir el imei de un teléfono móvil pulse *#06# y la tecla de llamada.<br>El imei ha de tener 15 digitos y es único." data-placement="right" required placeholder="Ej. 123456789157894" autocomplete="off" class="form-control">
+                                <input minlength="15" maxlength="15" id="inputUserName" type="text" name="imei" data-parsley-trigger="change" required data-toggle="tooltip" data-html="true"  title="Para conseguir el imei de un teléfono móvil pulse *#06# y la tecla de llamada.<br>El imei ha de tener 15 digitos y es único." data-placement="right" required placeholder="Ej. 123456789157894" autocomplete="off" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputUserName">Marca</label>

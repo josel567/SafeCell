@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Dispositivo | SafeCell')
+@section('title', 'Ayuda | SafeCell')
 
 @section('content')
     <!-- ============================================================== -->

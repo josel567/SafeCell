@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
 
+// Controla la lógica del panel de administración de la web
 class dashboardController extends Controller
 {
+    // Constructor
     public function  __construct()
     {
+        // Obtiene el token de las cookies
         $this->acces_token = $_COOKIE["acces_token"];
         $this->base_uri = "";
+        // Se establece la url de la api según el entorno de trabajo
         if (env('APP_ENV') == "local") {
             $this->base_uri = "http://dev.safecell/api";
         } else {
@@ -20,9 +24,11 @@ class dashboardController extends Controller
         }
     }
 
+    // Renderiza la página principal de la web y muestra todos los dispositivos del usuario
     public function index (Request $request) {
         $user = Auth::user();
 
+        // Inicio de la petición a la api
         $client = new Client([
             'base_uri' => $this->base_uri,
             'headers' => [
@@ -38,17 +44,21 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $devices = json_decode($e->getResponse()->getBody()->getContents());
         }
+        // Fin de la petición
 
+        // Forzamos el valor null, si está por defecto, a valor 0
         if (!isset($devices['devices'])) {
             $devices['devices'] = 0;
         }
 
+        // Devuelve la vista del menú con los datos correspondientes
         return view ('dashboard', ['data' => [
             'user' => $user,
             'devices' => $devices['devices']
         ]]);
     }
 
+    // Muestra el formulario de añadir dispositivo
     public function showAddDevice () {
         $user = Auth::user();
         return view('adddevice', [
@@ -58,10 +68,12 @@ class dashboardController extends Controller
         ]);
     }
 
+    // Añade un dispositivo
     public function addDevice(Request $request) {
         $params = $request->all();
         $user = Auth::user();
 
+        // Inicio de la petición a la api
         $client = new Client([
             'base_uri' => $this->base_uri,
             'headers' => [
@@ -81,6 +93,7 @@ class dashboardController extends Controller
         }
         $fcm_token = generateRandomToken(10);
         try {
+            // Realiza la llamada al metodo deviceController@add
             $response = $client->request('POST', $this->base_uri . "/device/add", [
                 'form_params' => [
                     "alias" => $params['alias'],
@@ -95,7 +108,9 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents());
         }
+        // Fin de la petición
 
+        // Si to do ha salido bien tal y si no pam
         if ($response['added'] == "OK") {
             return view('adddevice', [
                 "data" => [
@@ -114,6 +129,7 @@ class dashboardController extends Controller
 
     }
 
+    // Borra un dispositivo
     public function deleteDevice ($id) {
 
         $client = new Client([
@@ -135,10 +151,12 @@ class dashboardController extends Controller
         return redirect('/dashboard');
     }
 
+    // Muestra los detalles de dispositivo
     public function showDeviceDetails ($id) {
         $device = Device::find($id);
         $user = auth::user();
 
+        // Inicio de la petición a la api
         $client = new Client([
             'base_uri' => $this->base_uri,
             'headers' => [
@@ -154,6 +172,7 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $serviceStatuses = json_decode($e->getResponse()->getBody()->getContents());
         }
+        // Fin de la peticion
 
         return view('device', [
            "data" => [
@@ -165,6 +184,7 @@ class dashboardController extends Controller
 
     }
 
+    // Muestra añadir servicio
     public function showAddService ($device_id) {
         $user = Auth::user();
 
@@ -176,9 +196,12 @@ class dashboardController extends Controller
         ]);
     }
 
+    // Añade servicio
     public function addService (Request $request) {
         $user = Auth::user();
         $params = $request->all();
+
+        // Inicio de la petición
         $client = new Client([
             'base_uri' => $this->base_uri,
             'headers' => [
@@ -200,6 +223,8 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents(), true);
         }
+        // Final de la petición
+
         return view('addservice', [
             "data" => [
                 "message" => $response['message'],
@@ -209,8 +234,10 @@ class dashboardController extends Controller
         ]);
     }
 
+    // Borrar servicio
     public function deleteService($device_id, $service_name) {
 
+        // Inicio de la petición
         $client = new Client([
             'base_uri' => $this->base_uri,
             'headers' => [
@@ -231,9 +258,12 @@ class dashboardController extends Controller
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents());
         }
+        // Fin de la petición
 
         return redirect('/device/' . $device_id);
     }
+
+    // Muestra enConstruccion
     public function enConstruccion () {
         $user = Auth::user();
         return view('enConstruccion',[
@@ -243,6 +273,7 @@ class dashboardController extends Controller
         ]);
     }
 
+    // Muestra ayuda
     public function ayuda () {
         $user = Auth::user();
         return view('ayuda',[
@@ -251,6 +282,8 @@ class dashboardController extends Controller
             ]
         ]);
     }
+
+    // Muestra nosotros
     public function nosotros () {
         $user = Auth::user();
         return view('nosotros',[

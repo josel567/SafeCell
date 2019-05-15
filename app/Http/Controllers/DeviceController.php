@@ -6,8 +6,10 @@ use App\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+// Controla las acciones relacionadas con los dispositivos
 class DeviceController extends Controller
 {
+    // Añade dispositivo a la bbdd
     public function add(Request $request)
     {
         // Obtenemos los datos de usuario
@@ -16,6 +18,7 @@ class DeviceController extends Controller
         $params = $request->all();
 
         try {
+            // Comprueba que no haya un dispositivo con ese imei o token
             $device = Device::where('imei', $params['imei'])->orWhere('fcm_token', $params['fcm_token'])->first();
             if ($device != null) {
                 return response()->json([
@@ -44,6 +47,7 @@ class DeviceController extends Controller
         }
     }
 
+    // Actualiza un dispositivo
     public function update(Request $request, $id)
     {
         // Obtener Id de usuario
@@ -76,6 +80,7 @@ class DeviceController extends Controller
         }
     }
 
+    // Elimina un dispositivo
     public function remove($id)
     {
         // Obtener Id de usuario
@@ -101,6 +106,7 @@ class DeviceController extends Controller
         }
     }
 
+    // Muestra todos los dispositivos
     public function getAll(Request $request)
     {
         // Obtener Id de usuario
@@ -122,13 +128,13 @@ class DeviceController extends Controller
         }
     }
 
+    // Actualiza el token del dispositivo
+    // Este método prepara la api para un futuro uso de firebase
     public function updateDeviceFcmToken(Request $request)
     {
         // Obtenemos los parametros de la request
         $params = $request->all();
         $user = Auth::user();
-
-
         $device = Device::where('id' , $params['device_id'])->where('user_id', $user->id)->first();
 
         try {
@@ -154,6 +160,7 @@ class DeviceController extends Controller
         }
     }
 
+    // Actualiza la geolocalización del dispositivo
     public function updateDeviceLocation (Request $request) {
         // Obtenemos los parametros de la request
         $params = $request->all();
@@ -193,6 +200,7 @@ class DeviceController extends Controller
         }
     }
 
+    // Coge la localización del dispositivo
     public function getDeviceLocation ($id) {
         $device = Device::find($id);
 
@@ -210,6 +218,7 @@ class DeviceController extends Controller
         }
     }
 
+    // Coge la id del dispositivo por imei
     public function getDeviceIdByImei($imei) {
         $user = Auth::user();
         $device = Device::where('imei', $imei)->first();

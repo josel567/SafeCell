@@ -24,6 +24,7 @@ class Service extends Model
 
     ];
 
+    // Un servicio puede pertenecer a varios dispositivos
     public function devices()
     {
         return $this->belongsToMany(Device::class)->withPivot('is_active');

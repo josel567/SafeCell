@@ -24,11 +24,13 @@ class Device extends Model
 
     ];
 
+    // Un dispositivo puede tener varios servicios.
     public function services()
     {
         return $this->belongsToMany(Service::class)->withPivot('is_active');
     }
 
+    // Un dispositivo sólo pertenece a un usuario
     public function user() {
         return $this->belongsTo(User::class);
     }

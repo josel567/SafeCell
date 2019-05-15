@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
+// Controla las acciones relacionadas con el registro de usuario
 class registerController extends Controller
 {
     public function register (Request $request) {
@@ -34,11 +35,9 @@ class registerController extends Controller
             // Transform response in object
             $response = json_decode($response->getBody()->getContents());
 
-
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode($e->getResponse()->getBody()->getContents());
         }
-
 
         if ($response->message == "Successfully created user!") {
             // Registro OK

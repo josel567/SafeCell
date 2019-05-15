@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-
+// Controla las acciones relacionadas con el login y logout
 class loginController extends Controller
 {
     public function login (Request $request) {

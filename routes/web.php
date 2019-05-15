@@ -11,6 +11,9 @@
 |
 */
 
+// Estas son las rutas de la web
+
+// Estas son las rutas que no necesitan autenticación
 Route::get('/', function () {
     return view('login');
 })->name('login');
@@ -21,6 +24,7 @@ Route::get('/register', function () {
 Route::post('/login', 'loginController@login');
 Route::post('/register', 'registerController@register');
 
+// Estas rutas requieren de autenticación
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', 'dashboardController@index');
     Route::get('/adddevice', 'dashboardController@showAddDevice');

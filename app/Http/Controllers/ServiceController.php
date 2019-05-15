@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+// Controla las acciones relacionadas con los servicios
 class ServiceController extends Controller
 {
+    // Añade un servicio a un dispositivo
     public function add (Request $request) {
         $user = Auth::user();
         $params = $request->all();
@@ -47,6 +49,7 @@ class ServiceController extends Controller
             ], 400);
         }
         try {
+           // Asocia el servicio a un dispositivo y añade el estado
             $device->services()->attach($service->id, ['is_active'=>$params['is_active']]);
             return response()->json([
                 'message' => "Servicio añadido correctamente.",
@@ -56,10 +59,9 @@ class ServiceController extends Controller
                 'message' => $e->getMessage(),
             ], 400);
         }
-
     }
 
-
+    // Actualiza un servicio
     public function update (Request $request) {
         $user = Auth::user();
         $params = $request->all();
@@ -109,6 +111,7 @@ class ServiceController extends Controller
 
     }
 
+    // Borrar un servicio
     public function delete (Request $request) {
         $user = Auth::user();
         $params = $request->all();
@@ -157,6 +160,7 @@ class ServiceController extends Controller
         }
     }
 
+    // Coge los estados de los servicios
     public function getStatuses ($id) {
         $user = Auth::user();
         $device = Device::where('id', $id)->first();
@@ -193,7 +197,5 @@ class ServiceController extends Controller
                 'services' => $services_statuses,
             ], 200);
         }
-
-
     }
 }
