@@ -31,7 +31,12 @@
                 <div class="card-header">Proyecto DAW - Escola del treball</div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p>Iris Iglesias Baladon, Joan Samsó Roig, Jose Luís García Torrecillas</p>
+                        <dl>
+                        <dt>Alumnos en este proyecto:</dt>
+                        <dd>Iris Iglesias Baladon</dd>
+                        <dd>Joan Samsó Roig</dd>
+                        <dd>Jose Luís García Torrecillas</dd>
+                        </dl>
                         <footer class="blockquote-footer">19 de Mayo de 2019
                         </footer>
                     </blockquote>
