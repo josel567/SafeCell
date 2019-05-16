@@ -32,14 +32,13 @@
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
                         <dl>
-                        <dt>Alumnos en este proyecto:</dt>
-                        <dd>Iris Iglesias Baladon</dd>
-                        <dd>Joan Samsó Roig</dd>
-                        <dd>Jose Luís García Torrecillas</dd>
+                            <dt>Alumnos en este proyecto:</dt>
+                            <dd class="ml-5">Iris Iglesias Baladon</dd>
+                            <dd class="ml-5 ">Joan Samsó Roig</dd>
+                            <dd class="ml-5">Jose Luís García Torrecillas</dd>
                         </dl>
-                        <footer class="blockquote-footer">19 de Mayo de 2019
-                        </footer>
                     </blockquote>
+                    <footer class="blockquote-footer">19 de Mayo de 2019</footer>
                 </div>
             </div>
         </div>
