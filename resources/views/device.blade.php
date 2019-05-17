@@ -117,7 +117,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">Para terminar la configuración del dispositivo descarga la aplicación en el siguiente enlace e instalala en el terminal.</p>
-                        <a href="{{ asset('files/app-release-unsigned.apk') }}" class="btn btn-safeCell">Descargar</a>
+                        <a href="{{ asset('files/app-release.apk') }}" class="btn btn-safeCell">Descargar</a>
                     </div>
                 </div>
             </div>

@@ -110,7 +110,6 @@ class dashboardController extends Controller
         }
         // Fin de la petición
 
-        // Si to do ha salido bien tal y si no pam
         if ($response['added'] == "OK") {
             return view('adddevice', [
                 "data" => [
