@@ -25,20 +25,21 @@
     <!-- ============================================================== -->
     <!-- end ayuda -->
     <!-- ============================================================== -->
-    <div class="d-flex align-items-center h-100">
-        <div class="align-self-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-            <div class="card ">
-                <div class="card-header">Próximamente...</div>
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>Esta sección estará disponible lo antes posible. Disculpe las molestias.</p>
-                        <footer class="blockquote-footer">SafeCell está trabajando para mejorar su aplicación.
-                        </footer>
-                    </blockquote>
+    <div class="">
+        <div class="d-flex align-items-center h-100">
+            <div class="align-self-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                <div class="card ">
+                    <div class="card-header">Próximamente...</div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>Esta sección estará disponible lo antes posible. Disculpe las molestias.</p>
+                            <footer class="blockquote-footer">SafeCell está trabajando para mejorar su aplicación.
+                            </footer>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <!-- ============================================================== -->
         <!-- end ayuda-->
         <!-- ============================================================== -->
