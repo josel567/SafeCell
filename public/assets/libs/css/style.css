@@ -6989,7 +6989,7 @@ Media Query
     .navbar-brand {
         max-width: 400px;
     }
-    .navbar-toggler {
+    #btn-navbar {
         display: none;
     }
 }
