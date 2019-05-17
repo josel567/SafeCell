@@ -25,24 +25,25 @@
     <!-- ============================================================== -->
     <!-- end ayuda -->
     <!-- ============================================================== -->
-    <div class="d-flex align-items-center h-100">
-        <div class="align-self-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-            <div class="card ">
-                <div class="card-header">Proyecto DAW - Escola del treball</div>
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <dl>
-                            <dt>Alumnos en este proyecto:</dt>
-                            <dd class="ml-5">Iris Iglesias Baladon</dd>
-                            <dd class="ml-5 ">Joan Samsó Roig</dd>
-                            <dd class="ml-5">Jose Luís García Torrecillas</dd>
-                        </dl>
-                    </blockquote>
-                    <footer class="blockquote-footer">19 de Mayo de 2019</footer>
+    <div class="">
+        <div class="d-flex align-items-center h-100">
+            <div class="align-self-center col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                <div class="card ">
+                    <div class="card-header">Proyecto DAW - Escola del treball</div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <dl>
+                                <dt>Alumnos en este proyecto:</dt>
+                                <dd class="ml-5">Iris Iglesias Baladon</dd>
+                                <dd class="ml-5 ">Joan Samsó Roig</dd>
+                                <dd class="ml-5">Jose Luís García Torrecillas</dd>
+                            </dl>
+                        </blockquote>
+                        <footer class="blockquote-footer">19 de Mayo de 2019</footer>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <!-- ============================================================== -->
         <!-- end ayuda-->
         <!-- ============================================================== -->

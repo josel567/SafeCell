@@ -2063,7 +2063,8 @@ Pageheader
     color: #71748d;
     background-color: #fff;
     width: 100%;
-    /*position: absolute; bottom: 0;*/
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-links {}
@@ -6985,7 +6986,7 @@ Media Query
 /* Custom, iPhone Retina */
 @media only screen and (max-width:320px) {}
 
-@media only screen and (max-width:550px) {
+@media only screen and (max-width:600px) {
     .navbar-brand {
         max-width: 400px;
     }
