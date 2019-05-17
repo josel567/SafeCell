@@ -56,7 +56,7 @@
                                 <div class="col">
                                     <p class="text-center mt-2">
                                         <button type="submit" class="btn btn-space btn-safeCell">Guardar cambios</button>
-                                        <a href="/device/{{$data['device_id']}}" class="btn btn-space btn-safeCell">Cancelar</a>
+                                        <a href="/device/{{$data['device_id']}}" class="btn btn-space btn-safeCell">Regresar</a>
                                     </p>
                                 </div>
                             </div>
