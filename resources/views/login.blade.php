@@ -46,7 +46,6 @@
                                 <strong>{{ $success_message }}</strong>
                             </div>
                         @endif
-
                     </div>
                 </div>
             </div>

@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Device::class);
     }
+
+    public function delete() {
+        $this->devices()->delete();
+        return parent::delete();
+    }
 }
