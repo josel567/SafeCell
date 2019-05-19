@@ -24,25 +24,31 @@
                         <!-- Login Form -->
                         <form action="/register" method="post">
                             @csrf
-                            <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre de usuario">
-                            <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
-                            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña">
-                            <input type="password" id="password_confirmation" class="fadeIn third" name="password_confirmation" placeholder="Repetir contraseña">
-                            <input type="submit" class="fadeIn fourth" value="Registrarse">
+                            <input type="text" id="name" class="fadeIn second" name="name" placeholder="{{ __('messages.nombre.usuario') }}">
+                            <input type="text" id="email" class="fadeIn second" name="email" placeholder="{{ __('messages.email') }}">
+                            <input type="password" id="password" class="fadeIn third" name="password" placeholder="{{ __('messages.pass') }}">
+                            <input type="password" id="password_confirmation" class="fadeIn third" name="password_confirmation" placeholder="{{ __('messages.repass') }}">
+                            <input type="submit" class="fadeIn fourth" value="{{ __('messages.registrarse') }}">
                         </form>
 
                         <!-- Remind Passowrd -->
                         <div id="formFooter">
-                            <a class="underlineHover" href="/">¿Ya tienes una cuenta? Inicia sesión.</a>
+                            <a class="underlineHover" href="/">{{ __('messages.con.cuenta') }}</a>
                         </div>
                         @if(isset($error_message))
                             <div class="alert alert-danger alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $error_message }}</strong>
                             </div>
-
                         @endif
-
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lang</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu"  style="background-image: url('images/background.jpg'); min-width:10%">
+                            <a class=" btn" href="{{ url('lang', ['es']) }}" ><img class="nav-logo" src="{{ asset('images/spain.png') }}" style="width:100%;height:100%"/></a>
+                            <a class="btn" href="{{ url('lang', ['ca']) }}"><img class="nav-logo" src="{{ asset('images/catalan.png') }}" style="width:100%;height:100%"/></a>
+                            <a class="btn" href="{{ url('lang', ['en']) }}"><img class="nav-logo" src="{{ asset('images/uk.png') }}" style="width:100%;height:100%"/></a>
+                        </div>
                     </div>
                 </div>
             </div>

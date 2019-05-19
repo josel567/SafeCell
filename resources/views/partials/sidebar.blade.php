@@ -14,13 +14,13 @@
                         Menu
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link active" href="/dashboard"><i class="fas fa-home"></i>Inicio <span class="badge badge-success">6</span></a>
+                        <a class="nav-link active" href="/dashboard"><i class="fas fa-home"></i>{{ __('messages.inicio') }}<span class="badge badge-success">6</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/enConstruccion"><i class="fas fa-chart-bar"></i>Estadísitcas <span class="badge badge-success">6</span></a>
+                        <a class="nav-link" href="/enConstruccion"><i class="fas fa-chart-bar"></i>{{ __('messages.estadist') }}<span class="badge badge-success">6</span></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/ayuda"><i class="fas fa-question"></i>Cómo empezar<span class="badge badge-success">6</span></a>
+                        <a class="nav-link" href="/ayuda"><i class="fas fa-question"></i>{{ __('messages.begin') }}<span class="badge badge-success">6</span></a>
                     </li>
                 </ul>
             </div>

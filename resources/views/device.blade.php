@@ -19,13 +19,13 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="page-header">
-                <h2 class="pageheader-title">Detalles de {{$data['device']->alias}}</h2>
+                <h2 class="pageheader-title">{{ __('messages.detalles') }} {{$data['device']->alias}}</h2>
                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Inicio</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Administración de dispositivos</li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{ __('messages.inicio') }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('messages.admin') }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -42,7 +42,7 @@
             <!-- ============================================================== -->
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header text-center">Geolocalización en tiempo real</h5>
+                    <h5 class="card-header text-center">{{ __('messages.geo') }}</h5>
                     <div class="card-body">
                         <div id="map" class="gmaps"></div>
                     </div>
@@ -51,60 +51,60 @@
             <!-- ============================================================== -->
             <!-- end basic map -->
             <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Servicios -->
+            <!-- ============================================================== -->
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                <!-- ============================================================== -->
-                <!-- Servicios -->
-                <!-- ============================================================== -->
                 <div class="card">
-                    <h5 class="card-header text-center">Servicios activos</h5>
+                    <h5 class="card-header text-center">{{ __('messages.serv.activos') }}</h5>
                     <div class="card-body">
                         <div id="servicesStatuses" class="gmaps">
                             @if(isset($data['serviceStatuses']['message']))
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <h3>No hay servicios añadidos a este dispositivo.</h3>
+                                        <h3>{{ __('messages.sin.servicios') }}</h3>
                                     </div>
                                 </div>
                             @else
                                 <table class="table table-striped">
                                     <thead>
-                                    <tr class="d-flex">
-                                        <th class="col-4">Servicio</th>
-                                        <th class="col-4 text-center">Estado</th>
-                                        <th class="col-4"></th>
-                                    </tr>
+                                        <tr class="d-flex">
+                                            <th class="col-4">{{ __('messages.servicio') }}</th>
+                                            <th class="col-4 text-center">{{ __('messages.estado') }}</th>
+                                            <th class="col-4"></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                 @foreach($data['serviceStatuses']['services'] as $serviceStatus)
                                         <tr class="d-flex">
                                             <td class="col-4">{{$serviceStatus['name']}}</td>
                                             @if($serviceStatus['status'])
-                                                <td class="col-4 text-center">Activado</td>
+                                            <td class="col-4 text-center">{{ __('messages.serv.activado') }}</td>
                                             @else
-                                                <td class="col-4 text-center">Desactivado</td>
+                                            <td class="col-4 text-center">{{ __('messages.serv.desactivado') }}</td>
                                             @endif
-                                                <td class="col-4 text-right">
-                                                    <a href="/deleteService/{{$data['device']->id}}/{{$serviceStatus['name']}}">
-                                                        <i class="fas fa-times"></i>
-                                                    </a>
-                                                </td>
+                                            <td class="col-4 text-right">
+                                                <a href="/deleteService/{{$data['device']->id}}/{{$serviceStatus['name']}}">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                 @endforeach
-                                        </tbody>
+                                    </tbody>
                                 </table>
                             @endif
                             <div class="row">
                                 <div class="col-12 text-center card-body">
-                                    <a href="/addservice/{{$data['device']->id}}" class="btn btn-safeCell"> Añadir servicio</a>
+                                    <a href="/addservice/{{$data['device']->id}}" class="btn btn-safeCell">{{ __('messages.add.serv') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end servicios-->
-                <!-- ============================================================== -->
             </div>
+            <!-- ============================================================== -->
+            <!-- end servicios-->
+            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- end ultimo paso-->
@@ -113,17 +113,17 @@
             <div class="col-12">
                 <div class="card text-center">
                     <div class="card-header d-flex">
-                        <h4 class="card-header-title d-block w-100">Último paso</h4>
+                        <h4 class="card-header-title d-block w-100">{{ __('messages.last') }}</h4>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Para terminar la configuración del dispositivo descarga la aplicación en el siguiente enlace e instalala en el terminal.</p>
-                        <a href="{{ asset('files/app-release.apk') }}" class="btn btn-safeCell">Descargar</a>
+                        <p class="card-text">{{ __('messages.last.cont') }}</p>
+                        <a href="{{ asset('files/app-release.apk') }}" class="btn btn-safeCell">{{ __('messages.download') }}</a>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- ============================================================== -->
+        <!-- end ultimo paso-->
+        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- end ultimo paso-->
-    <!-- ============================================================== -->
 @endsection

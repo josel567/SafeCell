@@ -43,3 +43,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/deleteUser/', 'dashboardController@deleteUser');
 
 });
+
+Route::get('lang/{lang}', function ($lang) {
+    session(['lang' => $lang]);
+    App::setLocale($lang);
+
+    return redirect()->back();
+});
