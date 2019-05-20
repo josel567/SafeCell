@@ -292,4 +292,85 @@ class dashboardController extends Controller
         ]);
     }
 
+    // Muestra updateUser
+    public function showUpdateUser () {
+        $user = Auth::user();
+        return view('showUpdateUser',[
+            'data' => [
+                'user' => $user
+            ]
+        ]);
+    }
+
+    // Actualizar usuario
+    public function updateUser (Request $request) {
+        $params = $request->all();
+        // Inicio de la petición
+
+        $client = new Client([
+            'base_uri' => $this->base_uri,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Authorization' => 'Bearer ' . $this->acces_token
+            ]
+        ]);
+        try {
+            $response = $client->request('PATCH', $this->base_uri . "/user/updateUser", [
+                'form_params' => [
+                    "name" => $params['name'],
+                    "email" => $params['email'],
+                    "password" => $params['password'],
+                    "password_confirmation" => $params['password_confirmation']
+                ]
+            ]);
+            // Transform response in object
+            $response = json_decode($response->getBody()->getContents());
+
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $response = json_decode($e->getResponse()->getBody()->getContents());
+        }
+
+        if ($response->message == "Successfully updated user!") {
+            // Registro OK
+            return view('login', ['success_message' => 'Cuenta modificada correctamente.']);
+        } else {
+            // Registro KO
+            return view('showUpdateUser', ['error_message' => 'Error al modificar la cuenta. Revisa los datos.']);
+        }
+    }
+
+    // funcion borrar usuario
+    public function deleteUser () {
+        // Inicio de la petición
+
+        $client = new Client([
+            'base_uri' => $this->base_uri,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Authorization' => 'Bearer ' . $this->acces_token
+            ]
+        ]);
+
+        try {
+            $response = $client->request('DELETE', $this->base_uri . "/user/deleteUser");
+            // Transform response in object
+            $response = json_decode($response->getBody()->getContents());
+
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+           $response = json_decode($e->getResponse()->getBody()->getContents());
+        }
+
+        if ($response->message == "Successfully deleted user!") {
+            // eliminado OK
+            return view('login', ['success_message' => 'Cuenta eliminada correctamente.']);
+        } else {
+            // eliminado KO
+            return view('showUpdateUser', ['error_message' => 'Error al eliminar la cuenta.']);
+        }
+    }
+
+
+
 }

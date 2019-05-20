@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('getAll', 'AuthController@user');
         Route::patch('updateUser', 'AuthController@updateUser');
+        Route::delete('deleteUser', 'AuthController@deleteUser');
     });
 
     // Rutas relacionadas con los dispositivos

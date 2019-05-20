@@ -84,8 +84,20 @@ class AuthController extends Controller
 
         $user->name = $params['name'];
         $user->email = $params['email'];
+        $user->password = bcrypt($params['password']);
         $user->save();
 
-        return response()->json($request->user());
+        return response()->json([$request->user(),
+            'message' => 'Successfully updated user!'],200);
+    }
+
+    // Elimina el usuario
+    public function deleteUser(Request $request)
+    {
+        $user = Auth::User();
+        $user->delete();
+
+        return response()->json([$request->user(),
+            'message' => 'Successfully deleted user!'],200);
     }
 }

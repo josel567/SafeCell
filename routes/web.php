@@ -38,5 +38,15 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/ayuda','dashboardController@ayuda');
     Route::get('/enConstruccion','dashboardController@enConstruccion');
     Route::get('/nosotros','dashboardController@nosotros');
+    Route::get('/showUpdateUser','dashboardController@showUpdateUser');
+    Route::post('/updateUser/', 'dashboardController@updateUser');
+    Route::post('/deleteUser/', 'dashboardController@deleteUser');
 
+});
+
+Route::get('lang/{lang}', function ($lang) {
+    session(['lang' => $lang]);
+    App::setLocale($lang);
+
+    return redirect()->back();
 });
