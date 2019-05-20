@@ -274,3 +274,14 @@ input[type=text]:placeholder {
 #icon {
     width:60%;
 }
+
+/*--- Selector idiomas ---*/
+.dropdown-banderas {
+    color: white;
+    margin-top: 1em;
+    border: 1px solid white;
+}
+
+.dropdown-banderas:hover {
+    color: white;
+}
