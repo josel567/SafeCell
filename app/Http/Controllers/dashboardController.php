@@ -343,6 +343,7 @@ class dashboardController extends Controller
     // funcion borrar usuario
     public function deleteUser () {
         // Inicio de la petición
+        $user = Auth::user();
 
         $client = new Client([
             'base_uri' => $this->base_uri,
@@ -367,7 +368,12 @@ class dashboardController extends Controller
             return view('login', ['success_message' => 'Cuenta eliminada correctamente.']);
         } else {
             // eliminado KO
-            return view('showUpdateUser', ['error_message' => 'Error al eliminar la cuenta.']);
+            return view('showUpdateUser', [
+                'data' => [
+                  'user' => $user
+                ],
+                'error_message' => 'Error al eliminar la cuenta.'
+            ]);
         }
     }
 
