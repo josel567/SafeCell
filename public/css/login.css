@@ -2,13 +2,13 @@
 /* BASIC */
 /*--- Selector idiomas ---*/
 .dropdown-banderas {
-    color: white;
-    margin-top: 1em;
-    border: 1px solid white;
+    color: white !important;
+    margin-top: 1em !important;
+    border: 1px solid white !important;
 }
 
 .dropdown-banderas:hover {
-    color: white;
+    color: white !important;
 }
 
 html, body, .content {
