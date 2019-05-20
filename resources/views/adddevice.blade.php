@@ -1,5 +1,9 @@
 @extends('app')
 
+@push('head')
+    <script src="{{ asset('js/addDevice.js')}}"></script>
+@endpush
+
 @section('title', 'Añadir dispositivo | SafeCell')
 
 @section('content')
@@ -34,15 +38,15 @@
                 <div class="card">
                     <h5 class="card-header">{{ __('messages.data') }}</h5>
                     <div class="card-body">
-                        <form action="/adddevice"  method="POST" id="basicform" data-parsley-validate="">
+                        <form action="/adddevice"  method="POST" id="basicform" data-parsley-validate="" onsubmit="return checkImei();">
                             @csrf
                             <div class="form-group">
                                 <label for="inputUserName">{{ __('messages.alias') }}</label>
                                 <input id="inputUserName" type="text" name="alias" data-parsley-trigger="change" required placeholder="Ej. Móvil de Marta" autocomplete="off" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputUserName">{{ __('messages.imei') }}</label>
-                                <input minlength="15" maxlength="15" id="inputUserName" type="text" name="imei" data-parsley-trigger="change" required data-toggle="tooltip" data-html="true"  title="{{ __('messages.inf.imei.1') }}<br>{{ __('messages.inf.imei.2') }}" data-placement="right" required placeholder="Ej. 123456789157894" autocomplete="off" class="form-control"/>
+                                <label for="inputImei">{{ __('messages.imei') }}</label>
+                                <input minlength="15" maxlength="15" id="inputImei" type="text" name="imei" data-parsley-trigger="change" required data-toggle="tooltip" data-html="true"  title="{{ __('messages.inf.imei.1') }}<br>{{ __('messages.inf.imei.2') }}" data-placement="right" required placeholder="Ej. 123456789157894" autocomplete="off" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label for="inputUserName">{{ __('messages.marca') }}</label>
