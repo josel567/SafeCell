@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pruebas_postman</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="pruebas-en-producción">PRUEBAS EN PRODUCCIÓN</h1>
+<h2 id="tabla-user">TABLA USER</h2>
+<h4 id="get-all-user-info---get">Get all user info - GET</h4>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NAME</th>
+<th>EMAIL</th>
+<th>EMAIL_VERIFIED</th>
+<th>CREATED_AT</th>
+<th>UPDATED_AT</th>
+<th>RESULTADO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>iris1</td>
+<td><a href="mailto:iris1@test.com">iris1@test.com</a></td>
+<td>null</td>
+<td>2019-04-25 17:27:00</td>
+<td>2019-04-25 17:27:00</td>
+<td>ESPERADO</td>
+</tr>
+</tbody>
+</table><p>Muestra mi usuario pero no entiendo por que es get all users si siempre hay un sólo usuario, no?</p>
+<h4 id="login---post">Login - POST</h4>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>EMAIL</th>
+<th>PASSWORD</th>
+<th>REMEMBER_ME</th>
+<th>RESULTADO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td><a href="mailto:iris1@test.com">iris1@test.com</a></td>
+<td>“123456”</td>
+<td>true</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table><h4 id="sign-up---post">Sign Up - POST</h4>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NAME</th>
+<th>EMAIL</th>
+<th>PASSWORD</th>
+<th>PASSWORD_CONFIRMATION</th>
+<th>RESULTADO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>iris1</td>
+<td><a href="mailto:iris1@test.com">iris1@test.com</a></td>
+<td>123456</td>
+<td>123456</td>
+<td>“message”: “Successfully created user!”</td>
+</tr>
+<tr>
+<td></td>
+<td>iris2</td>
+<td><a href="mailto:iris1@test.com">iris1@test.com</a></td>
+<td>123456</td>
+<td>123456</td>
+<td>“message”: “The given data was invalid.”“The email has already been taken.”</td>
+</tr>
+<tr>
+<td></td>
+<td>iris2</td>
+<td><a href="mailto:iris2@test.com">iris2@test.com</a></td>
+<td>123456</td>
+<td>123456</td>
+<td>OK</td>
+</tr>
+<tr>
+<td></td>
+<td>iris2</td>
+<td>iris2@</td>
+<td>123456</td>
+<td>123456</td>
+<td>KO</td>
+</tr>
+<tr>
+<td></td>
+<td>iris2</td>
+<td>@</td>
+<td>123456</td>
+<td>123456</td>
+<td>KO</td>
+</tr>
+<tr>
+<td></td>
+<td>iris2</td>
+<td>asdfas</td>
+<td>123456</td>
+<td>123456</td>
+<td>KO</td>
+</tr>
+<tr>
+<td></td>
+<td>iris3</td>
+<td><a href="mailto:iris3@test.com">iris3@test.com</a></td>
+<td>123456</td>
+<td>123456</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table><h2 id="tabla-device">TABLA DEVICE</h2>
+<h4 id="get-all-devices-from-user---get">Get all devices from user - GET</h4>
+
+<table>
+<thead>
+<tr>
+<th>VALOR</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usuario con 0 dispositivos</td>
+<td>{“devices”:[]}</td>
+<td>No devuelve mensaje</td>
+</tr>
+<tr>
+<td>Usuario con 1 dispostivo</td>
+<td>{“devices”:[{“id”:2,“user_id”:“3”,“alias”:“Iris Device”,“imei”:“KIFJKRJGFRG”,“brand”:“Sony”,“model”:“Xperia”,“fcm_token”:“5464564564545545145”,“created_at”:“2019-04-25 18:28:41”,“updated_at”:“2019-04-25 18:28:41”}]}</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Usuario con &gt;1 dispositivos</td>
+<td>-</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table><ul>
+<li>Cuando el dispositivo da Ko como resultado, incrementa la id igualmente.</li>
+</ul>
+<pre class=" language-js"><code class="prism  language-js"><span class="token comment">// Listado dispositivos para ver el salto de ids</span>
+<span class="token punctuation">{</span>
+     <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+     <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+     <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 4"</span><span class="token punctuation">,</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span>
+ <span class="token punctuation">{</span>
+     <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+     <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+     <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 5"</span><span class="token punctuation">,</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="add-new-device---post">Add new device - POST</h4>
+
+<table>
+<thead>
+<tr>
+<th>ALIAS</th>
+<th>IMEI</th>
+<th>BRAND</th>
+<th>MODEL</th>
+<th>FCM_TOKEN</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“Iris Device”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>5464564564545545145</td>
+<td>OK</td>
+<td></td>
+</tr>
+<tr>
+<td>“Iris Device”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>5464564564545545145</td>
+<td>OK</td>
+<td>Me deja meter exactamente el mismo dispositivo dos veces</td>
+</tr>
+<tr>
+<td>“Dispositivo 1”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>5464564564545545145</td>
+<td>OK</td>
+<td>-</td>
+</tr>
+<tr>
+<td>“Dispositivo 2”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>5464564564545545145</td>
+<td>OK</td>
+<td>-</td>
+</tr>
+<tr>
+<td>“Dispositivo 3”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>5464564564545545145</td>
+<td>OK</td>
+<td>-</td>
+</tr>
+<tr>
+<td>“Dispositivo 4”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>5464564564545545145</td>
+<td>OK</td>
+<td>-</td>
+</tr>
+<tr>
+<td>“”</td>
+<td>“”</td>
+<td>“”</td>
+<td>“”</td>
+<td>“”</td>
+<td>KO - Not null violation</td>
+<td>Resultado esperado con dispositivo vacio</td>
+</tr>
+<tr>
+<td>“Dispositivo 5”</td>
+<td>“KIFJKRJGFRG”</td>
+<td>Sony</td>
+<td>Xperia</td>
+<td>“”</td>
+<td>OK</td>
+<td>con el token vacío me deja crear device</td>
+</tr>
+</tbody>
+</table><h4 id="update-device-by-id---patch">Update device by id - PATCH</h4>
+
+<table>
+<thead>
+<tr>
+<th>DEVICE_ID</th>
+<th>TOKEN</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nuevoToken</td>
+<td>Ok</td>
+<td>El token puede ser alphanumerico</td>
+</tr>
+<tr>
+<td>100</td>
+<td>nuevoToken</td>
+<td>Ok</td>
+<td>“message”: “Creating default object from empty value”</td>
+</tr>
+</tbody>
+</table><h4 id="remove-device-by-id---del">Remove device by id - DEL</h4>
+<pre class=" language-js"><code class="prism  language-js"><span class="token comment">// Listado de devices para ver las id</span>
+<span class="token punctuation">{</span>
+    <span class="token string">"devices"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Iris Device"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Iris Device"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 1"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 2"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 3"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 4"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span>
+            <span class="token string">"alias"</span><span class="token punctuation">:</span> <span class="token string">"Dispositivo 5"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>KO-404</td>
+<td>NO EXISTE LA ID</td>
+</tr>
+<tr>
+<td>2</td>
+<td>KO-404</td>
+<td>LA ID SI EXISTE</td>
+</tr>
+</tbody>
+</table><p>Revisar como se comprueba el delete en postman. yo estoy añadiendo la id a la url</p>
+<h2 id="tabla-service">TABLA SERVICE</h2>
+<h4 id="add-service-to-device---post">Add service to device - POST</h4>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>SERVICIO</th>
+<th>ACTIVO</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>internet</td>
+<td>true</td>
+<td>KO</td>
+<td>“message”: “No existe un dispositivo con la id proporcionada.”</td>
+</tr>
+<tr>
+<td>1</td>
+<td>internet</td>
+<td>true</td>
+<td>KO</td>
+<td>“message”: “No existe un dispositivo asociado a tu cuenta de usuario con la id proporcionada.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>true</td>
+<td>OK</td>
+<td>“message”: “Servicio añadido correctamente.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>true</td>
+<td>OK</td>
+<td>“message”: “Ese servicio ya está asociado al dispositivo.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>false</td>
+<td>OK</td>
+<td>“message”: “Ese servicio ya está asociado al dispositivo.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>gps</td>
+<td>true</td>
+<td>OK</td>
+<td>“message”: “Servicio añadido correctamente.”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>internet</td>
+<td>false</td>
+<td>OK</td>
+<td>“message”: “Servicio añadido correctamente.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>wifi</td>
+<td>true</td>
+<td>OK</td>
+<td>“message”: “No existe un servicio con el nombre proporcionado.”</td>
+</tr>
+</tbody>
+</table><h4 id="update-service-status-for-device---patch">Update service status for device - PATCH</h4>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>SERVICIO</th>
+<th>ACTIVO</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>internet</td>
+<td>true</td>
+<td>KO</td>
+<td>“message”: “No existe un dispositivo con la id proporcionada.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>false</td>
+<td>KO</td>
+<td>“message”: “Servicio actualizado correctamente.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>true</td>
+<td>KO</td>
+<td>“message”: “Servicio actualizado correctamente.”</td>
+</tr>
+<tr>
+<td>1</td>
+<td>internet</td>
+<td>true</td>
+<td>KO</td>
+<td>“message”: “No existe un dispositivo asociado a tu cuenta de usuario con la id proporcionada.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>wifi</td>
+<td>true</td>
+<td>OK</td>
+<td>“message”: “No existe un servicio con el nombre proporcionado.”</td>
+</tr>
+</tbody>
+</table><h4 id="delete-service-for-device---del">Delete service for device - DEL</h4>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>SERVICIO</th>
+<th>RESULTADO</th>
+<th>COMENTARIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>internet</td>
+<td>KO</td>
+<td>“message”: “No existe un dispositivo con la id proporcionada.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>OK</td>
+<td>“message”: “Servicio eliminado correctamente.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>internet</td>
+<td>OK</td>
+<td>“message”: “Servicio eliminado correctamente.” Aunque ya no existe ese servicio.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>internet</td>
+<td>KO</td>
+<td>“message”: “No existe un dispositivo asociado a tu cuenta de usuario con la id proporcionada.”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>wifi</td>
+<td>OK</td>
+<td>“message”: “No existe un servicio con el nombre proporcionado.”</td>
+</tr>
+</tbody>
+</table></div>
+</body>
+
+</html>
