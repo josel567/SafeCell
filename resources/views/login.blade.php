@@ -50,7 +50,7 @@
                         @endif
                     </div>
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lang</button>
+                        <button class="btn dropdown-toggle dropdown-banderas" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lang</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu"  style="background-image: url('images/background.jpg'); min-width:10%">
                             <a class=" btn" href="{{ url('lang', ['es']) }}" ><img class="nav-logo" src="{{ asset('images/spain.png') }}" style="width:100%;height:100%"/></a>
                             <a class="btn" href="{{ url('lang', ['ca']) }}"><img class="nav-logo" src="{{ asset('images/catalan.png') }}" style="width:100%;height:100%"/></a>
