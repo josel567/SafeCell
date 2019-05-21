@@ -12,7 +12,7 @@ window.onload = function() {
         xhttp.send();
     }
     getLocation();
-    setInterval(getLocation, 60000);
+    setInterval(getLocation, 15000);
 
     function initMap(lat, lon) {
 
